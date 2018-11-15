@@ -83,6 +83,77 @@
             $password2 = "";
         }
     }
+    $hostname = "localhost";
+    $username = "adminer";
+    $passwd = "after-water-49";
+    $DBConnect = false;
+    $DBName = "internships2";
+    if ($errors == 0) {
+        //Only do a connection if generated no errors in validation
+        $DBConnect = mysqli_connect($hostname, $username, $passwd);
+        if (!$DBConnect) {
+            ++$errors;
+            echo "<p>Unable to connect to the database server" .
+                " error code: " . mysqli_connect_error() . "</p>\n";
+        }
+        else {
+            $result =  mysqli_select_db($DBConnect, $DBName);
+            if (!$result) {
+                ++$errors;
+                echo "<p>Unable to select the database" .
+                " \"$DBName\" error code: " . 
+                mysqli_error($DBConnect) . "</p>\n";
+            }
+        }
+    }
+    $TableName = "interns";
+    //See if already have email in database
+    if ($errors == 0) {
+        $SQLstring = "SELECT count(*) FROM $TableName" . 
+            " WHERE email='$email'";
+        $queryResult = mysqli_query($DBConnect, $SQLstring);
+        if ($queryResult) {
+            $row = mysqli_fetch_row($queryResult);
+            //If primary key greater than 0 = good
+            if ($row[0] > 0) {
+                ++$errors;
+                echo "<p>The email address entered (" .
+                    htmlentities($email) . ") is already registered.</p>\n";
+            }
+        }
+    }
+    if ($errors == 0) {
+        $first = stripslashes($_POST['first']);
+        $last = stripslashes($_POST['last']);
+        $SQLstring = "INSERT INTO $TableName" .
+            " (first, last, email, password_md5)" .
+            " VALUES('$first', '$last', '$email', '" .
+            md5($password) . "')";
+        $queryResult = mysqli_query($DBConnect, $SQLstring);
+        if (!$queryResult) {
+             ++$errors;
+            echo "<p>Unable to save your registration" .
+            " information error code: " . 
+            mysqli_error($DBConnect) . "</p>\n";
+        }
+        else {
+            $internID = mysqli_insert_id($DBConnect);
+        }
+    }
+    if ($errors == 0) {
+        $internName = $first . " " . $last;
+        echo "<p>Thank You, $internName. ";
+        echo "Your new Intern ID is <strong>" . 
+            $internID . "</strong>.</p>\n";
+        echo "<p>Closing database connection.</p>\n";
+        mysqli_close($DBConnect);
+    }
+    //Errors
+    if ($errors > 0) {
+        echo "<p>Please use your browser's BACK button" . 
+            " to return to the form and fix the errors" .
+            " indicated.</p>\n";
+    }
     ?>
 </body>
 
