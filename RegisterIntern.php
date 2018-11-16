@@ -123,6 +123,7 @@
         }
     }
     if ($errors == 0) {
+        //table info
         $first = stripslashes($_POST['first']);
         $last = stripslashes($_POST['last']);
         $SQLstring = "INSERT INTO $TableName" .
@@ -145,8 +146,18 @@
         echo "<p>Thank You, $internName. ";
         echo "Your new Intern ID is <strong>" . 
             $internID . "</strong>.</p>\n";
+    }
+    //Close database connection
+    if ($DBConnect) {
         echo "<p>Closing database connection.</p>\n";
         mysqli_close($DBConnect);
+    }
+    if ($errors == 0) {
+        //Hidden form field to pass data to next page in superglobal
+        echo "<form action='AvailableOpportunities.php' " . "method='post'>\n";
+        echo "<input type='hidden' name='internID' value='$internID'>\n";
+        echo "<input type='submit' name='submit' value='View Available Opportunities'>\n";
+        echo "</form>\n";
     }
     //Errors
     if ($errors > 0) {
