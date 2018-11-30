@@ -1,3 +1,7 @@
+<?php
+session_start();
+echo "Session ID: " . session_id() . "<br>\n";
+?>
 <!doctype html>
 
 <html>
@@ -23,7 +27,7 @@
     Returning users, please complete the second form to login.</p>
     
     <h3>New Intern Registration</h3>
-    <form action="RegisterIntern.php" method="post">
+    <form action="RegisterIntern.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
         <p>Enter Your Name: First
             <input type="text" name="first">
             Last 
@@ -49,7 +53,7 @@
     </form>
     
     <h3>Returning Intern Login</h3>
-    <form action="VerifyLogin.php" method="post">
+    <form action="VerifyLogin.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
         <p>
             Enter Your Email Address:
             <input type="text" name="email">
