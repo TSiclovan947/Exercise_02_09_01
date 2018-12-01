@@ -1,3 +1,7 @@
+<?php
+session_start();
+echo "Session ID: " . session_id() . "<br>\n";
+?>
 <!doctype html>
 <html>
 
@@ -19,12 +23,12 @@
     <h1>College Internship</h1>
     <h2>Available Opportunities</h2>
     <?php
-    if (isset($_REQUEST['internID'])) {
-        $internID = $_REQUEST['internID'];
-    }
-    else {
-        $internID = -1;
-    }
+//    if (isset($_REQUEST['internID'])) {
+//        $internID = $_REQUEST['internID'];
+//    }
+//    else {
+//        $internID = -1;
+//    }
     if (isset($_COOKIE['LastRequestDate'])) {
         $lastRequestDate = urldecode($_COOKIE['LastRequestDate']);
     }
@@ -32,7 +36,7 @@
         $lastRequestDate = "";
     }
     //debug
-    echo "\$internID: $internID\n";
+    echo "internID :" . $_SESSION['internID'] . "\n";
     
     $errors = 0;
     $hostname = "localhost";
@@ -63,7 +67,7 @@
     $TableName = "interns";
     if ($errors == 0) {
         $SQLstring = "SELECT * FROM $TableName" . 
-            " WHERE internID='$internID'";
+            " WHERE internID='" . $_SESSION['internID'] . "'";
         $queryResult = mysqli_query($DBConnect, $SQLstring);
         if (!$queryResult) {
             ++$errors;
@@ -91,7 +95,7 @@
     if ($errors == 0) {
         $SQLstring = "SELECT count(opportunityID)" .
             " FROM $TableName" . 
-            " WHERE internID='$internID'" . 
+            " WHERE internID='" . $_SESSION['internID'] . "'" . 
             " AND dateApproved IS NOT NULL";
         $queryResult = mysqli_query($DBConnect, $SQLstring);
         if (mysqli_num_rows($queryResult) > 0) {
@@ -103,7 +107,7 @@
     if ($errors == 0) {
         $selectedOpportunities = array();
         $SQLstring = "SELECT opportunityID FROM $TableName" . 
-            " WHERE internID='$internID'";
+            " WHERE internID='" . $_SESSION['internID'] . "'";
         $queryResult = mysqli_query($DBConnect, $SQLstring);
         if (mysqli_num_rows($queryResult) > 0) {
             while (($row = mysqli_fetch_row($queryResult)) != 
@@ -176,7 +180,7 @@
             }
             else {
                 echo "<a href ='RequestOpportunity.php?" . 
-                    "internID=$internID&" . 
+                    "PHPSESSID=" . session_id() . 
                     "opportunityID=" . 
                     $opportunity['opportunityID'] . 
                     "'>Available</a>";
