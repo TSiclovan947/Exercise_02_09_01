@@ -181,7 +181,7 @@ echo "Session ID: " . session_id() . "<br>\n";
             else {
                 echo "<a href ='RequestOpportunity.php?" . 
                     "PHPSESSID=" . session_id() . 
-                    "opportunityID=" . 
+                    "&opportunityID=" . 
                     $opportunity['opportunityID'] . 
                     "'>Available</a>";
             }
