@@ -54,11 +54,12 @@
             $password2 = "";
         }
     }
+
 $hostname = "localhost"; 
     $username = "adminer"; 
     $passwd = "after-water-49"; 
     $DBConnect = false; 
-    $DBName = "conferences2"; 
+    $DBName = "conference2"; 
     if ($errors == 0) { 
         //Only do a connection if generated no errors in validation 
         $DBConnect = mysqli_connect($hostname, $username, $passwd); 
