@@ -82,21 +82,38 @@
     if ($DBConnect) { 
         echo "<p>Closing database connection.</p>\n"; 
         mysqli_close($DBConnect); 
-    } 
-    if ($errors == 0) { 
-        //Hidden form field to pass data to next page in superglobal 
-        echo "<form action='AvailableSeminars.php' " . "method='post'>\n"; 
-        echo "<input type='hidden' name='conferenceID' value='$conferenceID'>\n"; 
-        echo "<input type='submit' name='submit' value='View Available Seminars'>\n"; 
-        echo "</form>\n"; 
-    } 
+    }
+//    if ($errors == 0) { 
+//        //Hidden form field to pass data to next page in superglobal 
+//        echo "<form action='AvailableSeminars.php' " . "method='post'>\n"; 
+//        echo "<input type='hidden' name='conferenceID' value='$conferenceID'>\n"; 
+//        echo "<input type='submit' name='submit' value='View Available Seminars'>\n"; 
+//        echo "</form>\n"; 
+//    } 
     //If any errors in the script echoes this message 
     if ($errors > 0) { 
          echo "<p>Please use your browser's BACK button" .  
             " to return to the form and fix the errors" . 
             " indicated.</p>\n"; 
     } 
-    ?> 
+    ?>
+    <form action="AvailableSeminars.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
+       <h2>Fill in Your Company Information</h2>
+        <p>
+            Company Name:
+            <input type="text" name="text">
+        </p>
+        <p>
+            Company Email:
+            <input type="text" name="email">
+        </p>
+        <p>
+            Company Phone Number:
+            <input type="tel" name="phoneNumber">
+        </p>
+        <input type="reset" name="reset" value="Reset Login Form">
+            <input type="submit" name="login" value="Log In">
+    </form> 
 </body> 
  
 </html> 
