@@ -237,6 +237,23 @@ $hostname = "localhost";
     <?php
     //echo $body;
     ?>
+      <form action="AvailableSeminars.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
+       <h2>Fill in Your Company Information</h2>
+        <p>
+            Company Name:
+            <input type="text" name="text">
+        </p>
+        <p>
+            Company Email:
+            <input type="text" name="email">
+        </p>
+        <p>
+            Company Phone Number:
+            <input type="tel" name="phoneNumber">
+        </p>
+        <input type="reset" name="reset" value="Reset Login Form">
+            <input type="submit" name="login" value="Log In">
+    </form> 
 </body>
 
 </html>

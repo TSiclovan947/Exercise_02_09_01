@@ -26,12 +26,13 @@ echo "Session ID: " . session_id() . "<br>\n";
    <?php
    echo "<p><em>Your First Selected Seminar:</em></p>";
    echo $_POST['option1'];
-    echo "<p><em>Your Second Selected Seminar:</em></p>";
+   echo "<p><em>Your Second Selected Seminar:</em></p>";
    echo $_POST['option2'];
-    echo "<p><em>Your Third Selected Seminar:</em></p>\n";
+   echo "<p><em>Your Third Selected Seminar:</em></p>\n";
    echo $_POST['option3'];
-    echo "<p><strong>Use the back arrow to make any changes.</strong></p>";
-     echo "<p><a href='Index2.php'>Log Out</a></p>\n";
+   echo "<p><strong>Use the back arrow to make any changes.</strong></p>";
+   echo "<p>Click <a href='SubmittedData.php'>Here</a> to review information.</p>";
+   echo "<p><a href='Index2.php'>Log Out</a></p>\n";
    ?>
 </body>
 
