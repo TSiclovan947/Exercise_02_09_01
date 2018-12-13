@@ -20,8 +20,9 @@ echo "Session ID: " . session_id() . "<br>\n";
     <script src="modernizr.custom.65897.js"></script> 
 </head> 
  
-<body> 
+<body style="text-align:center;background-color:rgb(219, 224, 246)"> 
     <h1>Professional Conference</h1> 
+    <hr>
     <h2>Conference Login</h2> 
     <?php 
     //Errors variable to control the flow 

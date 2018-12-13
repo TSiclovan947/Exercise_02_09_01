@@ -94,23 +94,28 @@ if ($errors == 0) {
     <script src="modernizr.custom.65897.js"></script>
 </head>
 
-<body>
+<body style="text-align:center;background-color:rgb(219, 224, 246)">
     <h1>Professional Conference</h1>
+    <hr>
     <h2>Submitted Information</h2>
     <?php
     echo $body;
-    echo "<p><em>Company Name:</em></p>";
+    echo "<p><strong><em>Company Name:</em></strong></p>";
    echo isset($_POST['text']);
-   echo "<p><em>Company Email:</em></p>";
+   echo "<p><strong><em>Company Email:</em></strong></p>";
    echo isset($_POST['email']);
-   echo "<p><em>Company Number:</em></p>\n";
+   echo "<p><strong><em>Company Number:</em></strong></p>\n";
    echo isset($_POST['phoneNumber']);
-    echo "<p><em>Your First Selected Seminar:</em></p>";
+    echo "<p><strong><em>Your First Selected Seminar:</em></strong></p>";
    echo isset($_POST['option1']);
-   echo "<p><em>Your Second Selected Seminar:</em></p>";
+   echo "<p><strong><em>Your Second Selected Seminar:</em></strong></p>";
    echo isset($_POST['option2']);
-   echo "<p><em>Your Third Selected Seminar:</em></p>\n";
+   echo "<p><strong><em>Your Third Selected Seminar:</em></strong></p>\n";
    echo isset($_POST['option3']);
+    echo "<hr>";
+    echo "<h3>Thank You for signing up for the Conference. Remember the date: January 11, 2018!</h3>\n";
+    echo "<h3>A reminder will be sent to your email to remind you of the important date.</h3>\n";
+    echo "<h3>We cannot wait to see you there!</h3>\n";
     ?>
 </body>
 

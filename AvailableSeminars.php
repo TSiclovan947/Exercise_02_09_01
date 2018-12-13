@@ -18,8 +18,9 @@ echo "Session ID: " . session_id() . "<br>\n";
     <script src="modernizr.custom.65897.js"></script> 
 </head> 
  
-<body> 
+<body style="text-align:center;background-color:rgb(219, 224, 246)"> 
     <h1>Professional Conference</h1> 
+    <hr>
     <h2>Available Seminars</h2> 
     <?php 
     
@@ -78,7 +79,7 @@ echo "Session ID: " . session_id() . "<br>\n";
         else {
             if (mysqli_num_rows($queryResult) == 0) {
                 ++$errors;
-                echo "<p>Invalid Conference ID!</p>\n";
+                //echo "<p>Invalid Conference ID!</p>\n";
             }
         }
     } 

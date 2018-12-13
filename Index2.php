@@ -13,6 +13,7 @@ echo "Session ID: " . session_id() . "<br>\n";
          Date: December 04, 2018
         
          Index2.php
+         
     -->
     <title>Professional Conference</title>
     <meta charset="UTF-8">
@@ -20,12 +21,13 @@ echo "Session ID: " . session_id() . "<br>\n";
     <script src="modernizr.custom.65897.js"></script>
 </head>
 
-<body>
+<body style="text-align:center;background-color:rgb(219, 224, 246)">
     <h1>Professional Conference</h1>
+    <hr>
     <h2>Register / Login</h2>
     <p>New professionals, please complete the top form to register as a user. 
     Returning users, please complete the second form to login.</p>
-    
+    <hr>
     <h3>New Conference Registration</h3>
     <form action="RegisterConference.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
         <p>Enter Your Name: First
@@ -51,6 +53,7 @@ echo "Session ID: " . session_id() . "<br>\n";
         <input type="reset" name="reset" value="Reset Registration Form">
             <input type="submit" name="register" value="Register">
     </form>
+    <hr>
     
     <h3>Returning Conference Login</h3>
     <form action="ConferenceLogin.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
@@ -68,6 +71,7 @@ echo "Session ID: " . session_id() . "<br>\n";
         <input type="reset" name="reset" value="Reset Login Form">
             <input type="submit" name="login" value="Log In">
     </form>
+    <hr>
 </body>
 
 </html>
